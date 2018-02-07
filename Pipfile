@@ -1,0 +1,28 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+name = "pypi"
+verify_ssl = true
+
+
+[packages]
+
+Django = ">1.11"
+dj-database-url = "*"
+"psycopg2" = "*"
+Pillow = "*"
+PyYAML = "*"
+django-model-utils = "*"
+graphene-django = ">=1.0"
+djangorestframework = "*"
+django-filter = "*"
+django-spaghetti-and-meatballs = "*"
+waitress = "*"
+whitenoise = "*"
+django-cors-middleware = "*"
+python-decouple = "*"
+
+
+[dev-packages]
+
+honcho ="*"
