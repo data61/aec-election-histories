@@ -27,4 +27,15 @@ django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./res
 django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1937
 django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1943
 django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1946
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1949
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1949
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1951
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1954
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1955
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1958
 django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1961
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1963
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1966
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1972
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1974
+django-admin import_data -A ./resources/aec_res_injests/HoR.1919-x.yaml -B ./resources/aec_resources/ -v1 -D --arg=year:1987

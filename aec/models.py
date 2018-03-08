@@ -172,5 +172,8 @@ class VoterRecord(models.Model):
     election = models.ForeignKey(Election)
     region = models.ForeignKey(ElectoralRegion)
     gender = models.CharField(choices=GENDER, default=GENDER.Male, max_length=20)
-    enrolments = models.PositiveIntegerField(default=0)
-    votes_issued = models.PositiveIntegerField(default=0)
+    enrolments = models.PositiveIntegerField(
+        default=0, help_text="Number of people eligable to vote at this election")
+    votes_issued = models.PositiveIntegerField(default=0,
+        help_text="Number of ballot papers actually handed out at this election"
+    )
