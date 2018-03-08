@@ -29,56 +29,39 @@ STATIC_ROOT = config(
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm&2nvb=cysmr7ph#0*_z$v=bdupdnzo(ig@+zg6i%!==_kt^dz'
+SECRET_KEY = config('SECRET_KEY', default="change_me")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = list(filter(None,os.environ.get('ALLOWED_HOSTS', '').split(',')))
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='localhost,.xip.io,.c9users.io')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
-# Application definition
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_URLS_REGEX = r'^/graphql.*$'
-CORS_URLS_ALLOW_ALL_REGEX = (r'^/graphql.*$', )
 
 INSTALLED_APPS = [
     'aec',
     'data_importer',
 
-    'corsheaders',
-
-    'graphene_django',
-    
     'django_spaghetti',
-    'data_interrogator',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE_CLASSES = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-GRAPHENE = {
-    'SCHEMA': 'aec.graphql.schema' # Where your Graphene schema lives
-}
-
-ROOT_URLCONF = 'aec_election_history.urls'
+ROOT_URLCONF = 'aec.urls'
 
 TEMPLATES = [
     {
@@ -96,11 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'aec_election_history.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+WSGI_APPLICATION = 'aec.wsgi.application'
 
 import dj_database_url
 DATABASE_URL = config('DATABASE_URL', "sqlite:///%s/db.db"%(BASE_DIR))
@@ -145,38 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-DATA_INTERROGATION_DOSSIER = {
-    'suspects': [
-        {   "model":("aec","Person"),
-            # "wrap_sheets": {
-            #     "name": {
-            #         "columns": ['phid','name', 'family_name'],#,'given_name'],
-            #         "sort" : "family_name",
-            #         "template": "parlhand/tables/custom/parliamentarian.html",
-            #     },
-            #     "length_of_service": {
-            #         "columns": [], # none needed this is an alias
-            #         "sort" : "length_of_service",
-            #         "template": "parlhand/tables/custom/length_of_service.html",
-            #     }
-            # },
-            # "aliases": {
-            #     "length_of_service":{
-            #             'filter':"service.chamber.level=Federal",
-            #             'column':"sum(service.end_date - service.start_date)",
-            #         },
-            #     },
-            # "alias": "Parliamentian",
-        },
-        {'model':("aec","Electorate")},
-        {'model':("aec","Party"),
-        },
-        {'model':("aec","Election")},
-    ],
-    'witness_protection' : ["User","Revision","Version"],
-    'suspect_grouping':True
-}
 
 SPAGHETTI_SAUCE = {
     'apps':['aec'], #['tests']

@@ -1,17 +1,17 @@
 from django.contrib.contenttypes import fields as generic
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.gis.db import models as gis
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from model_utils.models import TimeStampedModel
 
 from django.core.serializers import serialize
-from django.contrib.gis.db.models import Extent
 
-from aec.utils.fields import ConfidenceDate
-from aec.utils import GENDER
+from .fields import ConfidenceDate
 
-class Person(TimeStampedModel):
+from model_utils import Choices
+
+GENDER = Choices('Male', 'Female', 'Unknown', 'Other')
+
+class Person(models.Model):
     """
     A person of interest to the AEC
     """
@@ -61,17 +61,6 @@ class Election(models.Model):
 class ElectoralRegion(models.Model):
     name = models.CharField(max_length=1024)
     election = models.ForeignKey(Election, related_name="electorates", help_text=_("The election this electorate is for"))
-    #geom = gis.PolygonField(_("geometry"), null=True, blank=True, help_text=_("A geometry"))
-    # def extent(self):
-    #     ext = self.areas.aggregate(Extent('geom')).get('geom__extent')
-    #     if ext:
-    #         return list(ext)
-    #     else:
-    #         return None
-
-    # def as_json(self):
-    #     return serialize('geojson', self.areas.all(),
-    #       fields=('name','geom','start_date','end_date','time'))
 
 
 class AustralianState(ElectoralRegion):
@@ -157,13 +146,6 @@ class PreferencesFlow(models.Model):
 class Party(models.Model):
     """
     An Australian political party that is (or has been) registered with the Australian Electoral Commission
-
-    Parties are often branded with colours in both Party and AEC material, e.g. Labor is often associated with red.
-    Colors for parties are recorded for use in presentation where appropriate.
-    Colours should be "CSS" safe, eg. Hexidecimal or named HTML web colours.
-
-    Note: Primary/Secondary may not always equate to Foreground/Background text colours during presentation,
-    however colours should be readable when used in this fashion.
     """
     class Meta:
         verbose_name_plural="Parties"

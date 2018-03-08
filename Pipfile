@@ -7,22 +7,17 @@ verify_ssl = true
 
 [packages]
 
-Django = ">1.11"
 dj-database-url = "*"
-"psycopg2" = "*"
-Pillow = "*"
-PyYAML = "*"
-django-model-utils = "*"
-graphene-django = ">=1.0"
-djangorestframework = "*"
-django-filter = "*"
+pyyaml = "*"
 django-spaghetti-and-meatballs = "*"
 waitress = "*"
 whitenoise = "*"
-django-cors-middleware = "*"
 python-decouple = "*"
+honcho = "*"
+"django-data-importer-0.0.1c" = {git = "https://github.com/LegoStormtroopr/django-data-importer", ref = "0.0.1c"}
+django-model-utils = "*"
+django = "==1.11.11"
 
 
 [dev-packages]
 
-honcho ="*"

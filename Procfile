@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT aec_election_history.wsgi:application
+web: waitress-serve --port=$PORT aec.wsgi:application
